@@ -25,7 +25,7 @@ public class PlayerShoot : MonoBehaviour
 
     private void Shoot_started(InputAction.CallbackContext context)
     {
-        InvokeRepeating("SpawnBullet", 0, 1);
+        InvokeRepeating("SpawnBullet", 0, .4f);
     }
 
     private void Shoot_canceled(InputAction.CallbackContext context)
