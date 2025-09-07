@@ -8,6 +8,7 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private GameObject bulletSpawn;
     [SerializeField] private GameObject bullet;
     [SerializeField] private AudioClip shootSound;
+    [SerializeField] private GameObject explosion;
 
     private InputAction shoot;
 
@@ -35,13 +36,7 @@ public class PlayerShoot : MonoBehaviour
     void SpawnBullet()
     {
         Instantiate(bullet, bulletSpawn.transform.position, Quaternion.identity);
+        Instantiate(explosion, bulletSpawn.transform.position, Quaternion.identity);
         AudioSource.PlayClipAtPoint(shootSound, transform.position, 1f);
-        print("shot");
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
