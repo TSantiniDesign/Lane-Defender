@@ -1,3 +1,11 @@
+/*****************************************************************************
+// File Name : EnemySpawn.cs
+// Author : Thomas Santini
+// Creation Date : September 4th, 2025 
+//
+// Brief Description : This script controls the enemy spawning, choosing
+which enemies to spawn and when.
+*****************************************************************************/
 using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
@@ -8,7 +16,10 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField] private GameObject slimeEnemy;
     [SerializeField] private int enemyType;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    /// <summary>
+    /// When the game begins, the amount of time until the next spawn is determined, and the enemy type is determined.
+    /// The countdown is started.
+    /// </summary>
     void Start()
     {
         spawnTimer = Random.Range(3, 15);
@@ -16,12 +27,18 @@ public class EnemySpawn : MonoBehaviour
         InvokeRepeating("spawnDecrease", 0, 1);
     }
 
+    /// <summary>
+    /// When called, this decreases the spawning timer.
+    /// </summary>
     void spawnDecrease()
     {
         spawnTimer--;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// When the spawning timer reaches zero, it determines which enemy to spawn, randomizes which enemy will spawn
+    /// next, and randomizes how long it will be until the next spawn.
+    /// </summary>
     void Update()
     {
         if (spawnTimer <= 0)
