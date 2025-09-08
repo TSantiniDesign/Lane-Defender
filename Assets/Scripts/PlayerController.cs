@@ -40,7 +40,6 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 inputMovement = iValue.Get<Vector2>();
         playerMovement.y = inputMovement.y * playerSpeed;
-        //playerMovement.z = inputMovement.y * playerSpeed;
     }
 
     /// <summary>
