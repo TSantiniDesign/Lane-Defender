@@ -13,7 +13,7 @@ public class LivesPlusScore : MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
     [SerializeField] private TMP_Text livesText;
     [SerializeField] private TMP_Text highScoreText;
-    [SerializeField] private TMP_Text deadText;
+    [SerializeField] private GameObject deadText;
     [SerializeField] private int score;
     [SerializeField] private int lives;
     [SerializeField] private int highScore;
@@ -34,13 +34,12 @@ public class LivesPlusScore : MonoBehaviour
         score += 20;
         scoreText.text = "Score: " + score.ToString();
         HighScoreUpdate();
-        //if (score >= highScore)
-        //{
-            //highScore = score;
-            //highScoreText.text = "High Score: " + highScore.ToString();
-        //}
     }
 
+    /// <summary>
+    /// This saves the player's high score when playing, and changes the high score to the current one, should the
+    /// current one become high than the previous high score.
+    /// </summary>
     public void HighScoreUpdate()
     {
         if (PlayerPrefs.HasKey("SavedHighScore"))

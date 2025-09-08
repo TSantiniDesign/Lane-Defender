@@ -22,7 +22,7 @@ public class EnemySpawn : MonoBehaviour
     /// </summary>
     void Start()
     {
-        spawnTimer = Random.Range(3, 15);
+        spawnTimer = Random.Range(3, 9);
         enemyType = Random.Range(1, 4);
         InvokeRepeating("spawnDecrease", 0, 1);
     }
@@ -59,7 +59,7 @@ public class EnemySpawn : MonoBehaviour
                 enemyType = Random.Range(1, 4);
             }
 
-                spawnTimer = Random.Range(3, 15);
+                spawnTimer = Random.Range(3, 11);
         }
     }
 }
