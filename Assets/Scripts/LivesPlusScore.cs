@@ -22,7 +22,7 @@ public class LivesPlusScore : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        HighScoreUpdate();
     }
 
     /// <summary>
@@ -33,10 +33,32 @@ public class LivesPlusScore : MonoBehaviour
     {
         score += 20;
         scoreText.text = "Score: " + score.ToString();
-        if (score >= highScore)
+        HighScoreUpdate();
+        //if (score >= highScore)
+        //{
+            //highScore = score;
+            //highScoreText.text = "High Score: " + highScore.ToString();
+        //}
+    }
+
+    public void HighScoreUpdate()
+    {
+        if (PlayerPrefs.HasKey("SavedHighScore"))
         {
-            highScore = score;
-            highScoreText.text = "High Score: " + highScore.ToString();
+            if (score > PlayerPrefs.GetInt("SavedHighScore"))
+            {
+                PlayerPrefs.SetInt("SavedHighScore", score);
+                highScoreText.text = "High Score: " + PlayerPrefs.GetInt("SavedHighScore").ToString();
+            }
+            else
+            {
+                highScoreText.text = "High Score: " + PlayerPrefs.GetInt("SavedHighScore").ToString();
+            }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("SavedHighScore", score);
+            highScoreText.text = "High Score: " + PlayerPrefs.GetInt("SavedHighScore").ToString();
         }
     }
 
